@@ -1,10 +1,16 @@
 import React from 'react'
 
+import Item from '../item'
+
 import './item-list.css'
 
 const ItemList = () => {
-    
-    return <div>ItemList</div>
+  return (
+    <>
+      ItemList
+      <Item />
+    </>
+  )
 }
 
 export default ItemList
