@@ -18,7 +18,7 @@
       "id": 3,
       "note": {
         "text": "Don't forget to wash #car tomorrow",
-        "tag": ["#car"]
+        "tag": ["#car", "#qweqwe", "#123123", "#asdasd"]
       }
     },
     {
@@ -75,6 +75,13 @@
       "note": {
         "text": "Lorem #ipsum dolor sit amet consectetur adipisicing elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
         "tag": ["#ipsum"]
+      }
+    },
+    {
+      "id": 12,
+      "note": {
+        "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. In illo #vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
+        "tag": ["#vero"]
       }
     }
   ]

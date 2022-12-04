@@ -1,35 +1,40 @@
 import React from 'react'
+import { memo } from 'react'
 
 import './item.scss'
 
-const Item = () => {
-  const tags = '#tag#tag#tag'
+const Item = memo(({info}) => {
+  const {id, note: {text, tag}} = info 
+  const _re = /[^#]*/gm
+  const modText = text.match(_re).join('')
+  const itemText = modText.length > 70 ? `${modText.slice(0, 70)}...` : modText
+
   return (
-    <div className='Item' onClick={() => console.log('Item')}>
+    <div className='Item' onClick={() => console.log(`Item ${id}`)}>
       <button
         className='btn Item__btn-delete'
         onClick={e => {
           e.stopPropagation()
-          console.log('Delete Item')
+          console.log(`Delete Item ${id}`)
         }}
       >
         <span>×</span>
       </button>
-      <div className='Item__info'>I wonna go to shop</div>
+      <div className='Item__info'>{itemText}</div>
       <div className='Item__tags'>
-        #tag#tag#tag
+        {tag}
       </div>
       <button
         className='btn Item__btn-edit'
         onClick={e => {
           e.stopPropagation()
-          console.log('Edit Item')
+          console.log(`Edit Item ${id}`)
         }}
       >
         Edit
       </button>
     </div>
   )
-}
+})
 
 export default Item
