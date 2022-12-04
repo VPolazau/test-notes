@@ -1,3 +1,11 @@
-#root {
-  height: 100vh;
+html {
+  background-color: #b3edbd91;
+
+  #root {
+    height: 100vh;
+  }
+  
+  .btn {
+    cursor: pointer;
+  }
 }

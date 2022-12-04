@@ -7,7 +7,7 @@ const Header = () => {
     <div className='Header'>
       <h1 className='Header__title'>Test Notes</h1>
       <input className='Header__input' type='text' placeholder='enter tag' />
-      <button className='Header__btn-new'>New</button>
+      <button className='btn Header__btn-new'>New</button>
     </div>
   )
 }

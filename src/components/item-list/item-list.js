@@ -6,10 +6,18 @@ import './item-list.scss'
 
 const ItemList = () => {
   return (
-    <>
-      ItemList
+    <div className='ItemList'>
       <Item />
-    </>
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+      <Item />
+    </div>
   )
 }
 

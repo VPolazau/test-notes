@@ -12,7 +12,8 @@ const App = () => {
     <ErrorBoudry>
       <div className='App'>
         <Header />
-        <EditForm />
+        <EditForm isEdit={true}/>
+        <EditForm isEdit={false}/>
         <ItemList />
       </div>
     </ErrorBoudry>
