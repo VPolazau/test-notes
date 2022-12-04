@@ -1,0 +1,26 @@
+.Header{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  height: 50px;
+  width: 100%;
+  padding-bottom: 5px;
+  border-bottom: 2px solid black;
+
+  .Header__title{
+    font-size: 3em;
+    font-weight:900;
+  }
+
+  .Header__input{
+    margin-left: auto;
+    padding-left: 7px;
+    height: 2em;
+    font-size: 1em;
+  }
+
+  .Header__btn-new{
+    height: 2em;
+    font-size: 1em;
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react'
 
 import Item from '../item'
 
-import './item-list.css'
+import './item-list.scss'
 
 const ItemList = () => {
   return (

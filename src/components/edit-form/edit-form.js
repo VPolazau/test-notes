@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './edit-form.css'
+import './edit-form.scss'
 
 const EditForm = () => {
     

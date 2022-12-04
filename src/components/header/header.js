@@ -1,10 +1,15 @@
 import React from 'react'
 
-import './header.css'
+import './header.scss'
 
 const Header = () => {
-    
-    return <div>Header</div>
+  return (
+    <div className='Header'>
+      <h1 className='Header__title'>Test Notes</h1>
+      <input className='Header__input' type='text' placeholder='enter tag' />
+      <button className='Header__btn-new'>New</button>
+    </div>
+  )
 }
 
 export default Header
