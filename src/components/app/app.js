@@ -6,11 +6,15 @@ import EditForm from '../edit-form'
 import ItemList from '../item-list'
 
 import './app.css'
+import { useSelector } from 'react-redux'
 
 const App = () => {
+  const { notes } = useSelector(state => state.notes)
+
+  console.log(notes)
   return (
     <ErrorBoudry>
-      <div className='container'>
+      <div className='App'>
         <Header />
         <EditForm />
         <ItemList />
