@@ -18,9 +18,13 @@ const ItemList = () => {
         })
       })
     })
-    
+
   },[])
-  
+
+  useEffect( () => {
+    setFilteredNotes(notes)
+  },[notes])
+
   return (
     <div className='ItemList'>
       {filteredNotes.map(item => (

@@ -1,10 +1,13 @@
 import React from 'react'
 import { memo } from 'react'
+import { useDispatch } from 'react-redux'
 import { btnEvent } from '../../events/event'
+import { deleteNote } from '../../store/redusers/notesSlice'
 
 import './item.scss'
 
 const Item = memo(({ info }) => {
+  const dispatch = useDispatch()
   const { id, text, tags } = info
   const _re = /[^#]*/gm
   const modText = text.match(_re).join('')
@@ -16,6 +19,7 @@ const Item = memo(({ info }) => {
 
   const onDeleteItem = e => {
     e.stopPropagation()
+    dispatch(deleteNote(id))
     console.log(`Delete Item ${id}`)
   }
 

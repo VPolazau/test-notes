@@ -8,9 +8,14 @@ const initialState = {
 export const notesSlice = createSlice({
   name: 'notes',
   initialState,
-  reducers: {},
+  reducers: {
+    deleteNote: (state, action) => {
+      const indx = state.notes.findIndex(note => note.id === action.payload)
+      state.notes.splice(indx,1)
+    },
+  },
 })
 
-export const {} = notesSlice.actions
+export const { deleteNote } = notesSlice.actions
 
 export default notesSlice.reducer
