@@ -16,7 +16,9 @@ const App = () => {
     btnEvent.addListener('onAddNewItem', ()=> {
       setMod(1)
     })
-    
+    btnEvent.addListener('onCloseEditForm', ()=> {
+      setMod(0)
+    })
   },[])
 
   return (

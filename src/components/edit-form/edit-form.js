@@ -1,8 +1,13 @@
 import React from 'react'
+import { btnEvent } from '../../events/event'
 
 import './edit-form.scss'
 
 const EditForm = ({isEdit}) => {
+
+  const onClose = () => {
+    btnEvent.emit('onCloseEditForm')
+  }
   
   const view = (
     <div className='EditForm'>
@@ -33,7 +38,7 @@ const EditForm = ({isEdit}) => {
           </div>
         </div>
         <button className='btn EditForm__btn-save ml'>Save</button>
-        <button className='btn EditForm__btn-close'>Close</button>
+        <button className='btn EditForm__btn-close' onClick={onClose}>Close</button>
       </div>
     </div>
   )
