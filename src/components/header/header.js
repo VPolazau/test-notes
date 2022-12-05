@@ -12,7 +12,6 @@ const Header = () => {
 
   const newItem = () => {
     btnEvent.emit('onAddNewItem')
-    console.log('onAddNewItem')
   }
 
   return (

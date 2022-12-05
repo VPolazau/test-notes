@@ -13,14 +13,13 @@ const ItemList = () => {
   useEffect(() => {
     btnEvent.addListener('onFilterChange', (term) => {
       setFilteredNotes( () => {
-        return notes.filter(note => note.tag.join().indexOf(term) > -1)
+        return notes.filter(note => {
+          return note.tags.map(el => el.tag).join('').indexOf(term) > -1
+        })
       })
     })
     
-    return () => {
-      btnEvent.removeAllListeners()
-    }
-  },[filteredNotes])
+  },[])
   
   return (
     <div className='ItemList'>

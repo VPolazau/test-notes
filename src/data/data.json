@@ -3,62 +3,67 @@
     {
       "id": 1,
       "text": "I wonna go to #shop",
-      "tag": ["#shop"]
+      "tags": [{ "id": 0, "tag": "#shop" }]
     },
     {
       "id": 2,
       "text": "#Call Victor",
-      "tag": ["#call"]
+      "tags": [{ "id": 0, "tag": "#call" }]
     },
     {
       "id": 3,
       "text": "Don't forget to wash #car tomorrow",
-      "tag": ["#car", "#asdasd", "#123123", "#asdasd"]
+      "tags": [
+        { "id": 0, "tag": "#car" },
+        { "id": 1, "tag": "#asdasd" },
+        { "id": 2, "tag": "#123123" },
+        { "id": 3, "tag": "#asdasd" }
+      ]
     },
     {
       "id": 4,
       "text": "#Lorem ipsum dolor sit amet consectetur adipisicing elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#lorem"]
+      "tags": [{ "id": 0, "tag": "#lorem" }]
     },
     {
       "id": 5,
       "text": "Lorem ipsum dolor sit amet #consectetur adipisicing elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#consectetur"]
+      "tags": [{ "id": 0, "tag": "#consectetur" }]
     },
     {
       "id": 6,
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing #elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#elit"]
+      "tags": [{ "id": 0, "tag": "#elit" }]
     },
     {
       "id": 7,
       "text": "Lorem ipsum dolor sit amet consectetur #adipisicing elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#adipisicing"]
+      "tags": [{ "id": 0, "tag": "#adipisicing" }]
     },
     {
       "id": 8,
       "text": "Lorem ipsum dolor sit #amet consectetur adipisicing elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#amet"]
+      "tags": [{ "id": 0, "tag": "#amet" }]
     },
     {
       "id": 9,
       "text": "Lorem ipsum dolor #sit amet consectetur adipisicing elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#sit"]
+      "tags": [{ "id": 0, "tag": "#sit" }]
     },
     {
       "id": 10,
       "text": "Lorem ipsum #dolor sit amet consectetur adipisicing elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#dolor"]
+      "tags": [{ "id": 0, "tag": "#dolor" }]
     },
     {
       "id": 11,
       "text": "Lorem #ipsum dolor sit amet consectetur adipisicing elit. In illo vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#ipsum"]
+      "tags": [{ "id": 0, "tag": "#ipsum" }]
     },
     {
       "id": 12,
       "text": "Lorem ipsum dolor sit amet consectetur adipisicing elit. In illo #vero repellat a voluptates consequatur tempore nihil eligendi molestiae amet reiciendis atque eveniet praesentium alias nisi, delectus iusto veritatis! Dolorum.",
-      "tag": ["#vero"]
+      "tags": [{ "id": 0, "tag": "#vero" }]
     }
   ]
 }
