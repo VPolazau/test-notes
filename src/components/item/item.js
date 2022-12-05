@@ -3,8 +3,8 @@ import { memo } from 'react'
 
 import './item.scss'
 
-const Item = memo(({info}) => {
-  const {id, note: {text, tag}} = info 
+const Item = memo(({ info }) => {
+  const { id, text, tag } = info
   const _re = /[^#]*/gm
   const modText = text.match(_re).join('')
   const itemText = modText.length > 70 ? `${modText.slice(0, 70)}...` : modText
@@ -21,9 +21,7 @@ const Item = memo(({info}) => {
         <span>×</span>
       </button>
       <div className='Item__info'>{itemText}</div>
-      <div className='Item__tags'>
-        {tag}
-      </div>
+      <div className='Item__tags'>{tag}</div>
       <button
         className='btn Item__btn-edit'
         onClick={e => {
