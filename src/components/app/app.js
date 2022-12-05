@@ -29,8 +29,11 @@ const App = () => {
       setMod(0)
     })
     btnEvent.addListener('onItemClick', (props)=> {
-      console.log('onItemClick')
       setMod(2)
+      setInfo({...props})
+    })
+    btnEvent.addListener('onEditItem', (props) => {
+      setMod(1)
       setInfo({...props})
     })
   },[])

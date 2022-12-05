@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { btnEvent } from '../../events/event'
 
 import './edit-form.scss'
 
-const EditForm = ({ isEdit, info }) => {
+const EditForm = memo(({ isEdit, info }) => {
   const { id, text, tags } = info
 
   const onClose = () => {
@@ -32,15 +32,19 @@ const EditForm = ({ isEdit, info }) => {
 
   const edit = (
     <div className='EditForm'>
-      <textarea className='EditForm__textarea' defaultValue={text} />
+      <textarea className='EditForm__textarea' value={text} />
       <div className='EditForm__controls'>
         <div className='EditForm__tags'>
-          {tags.length === 0 ? null : (
-            <div className='tag'>
-              <span className='tag__name'>{tags.tag}</span>
-              <button className='btn tag__btn-delete'>×</button>
-            </div>
-          )}
+          {tags.length === 0 ? null : 
+            tags.map(el => {
+              return (
+                <div className='tag' key={`${id}_${el.id}`}>
+                  <span className='tag__name'>{el.tag}</span>
+                  <button className='btn tag__btn-delete'>×</button>
+                </div>
+              )
+            })
+          }
         </div>
         <button className='btn EditForm__btn-save ml'>Save</button>
         <button className='btn EditForm__btn-close' onClick={onClose}>
@@ -50,6 +54,6 @@ const EditForm = ({ isEdit, info }) => {
     </div>
   )
   return isEdit ? edit : view
-}
+})
 
 export default EditForm

@@ -14,28 +14,24 @@ const Item = memo(({ info }) => {
     btnEvent.emit('onItemClick', { id, text, tags })
   }
 
+  const onDeleteItem = e => {
+    e.stopPropagation()
+    console.log(`Delete Item ${id}`)
+  }
+
+  const onEditItem = e => {
+    e.stopPropagation()
+    btnEvent.emit('onEditItem', { id, text, tags })
+  }
+
   return (
     <div className='Item' onClick={onItemClick}>
-      <button
-        className='btn Item__btn-delete'
-        onClick={event => {
-          event.stopPropagation()
-          console.log(`Delete Item ${id}`)
-        }}
-      >
+      <button className='btn Item__btn-delete' onClick={onDeleteItem}>
         <span>×</span>
       </button>
       <div className='Item__info'>{itemText}</div>
-      <div className='Item__tags'>
-        {tags.map(el => el.tag)}
-      </div>
-      <button
-        className='btn Item__btn-edit'
-        onClick={e => {
-          e.stopPropagation()
-          console.log(`Edit Item ${id}`)
-        }}
-      >
+      <div className='Item__tags'>{tags.map(el => el.tag)}</div>
+      <button className='btn Item__btn-edit' onClick={onEditItem}>
         Edit
       </button>
     </div>
