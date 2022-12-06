@@ -12,12 +12,12 @@
     },
     {
       "id": 3,
-      "text": "Don't forget to wash #car tomorrow",
+      "text": "Don't #forget to #wash #car #tomorrow",
       "tags": [
         { "id": 0, "tag": "#car" },
-        { "id": 1, "tag": "#asdasd" },
-        { "id": 2, "tag": "#123123" },
-        { "id": 3, "tag": "#asdasd" }
+        { "id": 1, "tag": "#forget" },
+        { "id": 2, "tag": "#wash" },
+        { "id": 3, "tag": "#tomorrow" }
       ]
     },
     {
