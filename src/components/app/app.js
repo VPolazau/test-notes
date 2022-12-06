@@ -12,31 +12,38 @@ import { useSelector } from 'react-redux'
 const App = () => {
   const { notes } = useSelector(state => state.notes)
   const [mod, setMod] = useState(0)
-  const [info, setInfo] = useState()
+  const [infoId, setInfoId] = useState()
+  const [editInfo, setEditInfo] = useState()
 
   useEffect(() => {
     btnEvent.addListener('onAddNewItem', ()=> {
       console.log('onAddNewItem')
       setMod(1)
-      setInfo({
+      setEditInfo({
         id: notes.length + 1,
         text: '',
         tags: []
       })
     })
     btnEvent.addListener('onCloseEditForm', ()=> {
-      console.log('onCloseEditForm')
       setMod(0)
     })
-    btnEvent.addListener('onItemClick', (props)=> {
+    btnEvent.addListener('onItemClick', id => {
       setMod(2)
-      setInfo({...props})
+      const indxNote = notes.findIndex(note => note.id === id)
+      setInfoId(indxNote)
     })
-    btnEvent.addListener('onEditItem', (props) => {
+    btnEvent.addListener('onEditItem', id => {
       setMod(1)
-      setInfo({...props})
+      const indxNote = notes.findIndex(note => note.id === id)
+      setInfoId(indxNote)
     })
+
   },[])
+
+  useEffect(() => {
+    setEditInfo(notes[infoId])
+  }, [notes, infoId])
 
   return (
     <ErrorBoudry>
@@ -44,8 +51,8 @@ const App = () => {
         <Header />
 
           {mod === 0 && null}
-          {mod === 1 && <EditForm isEdit={true} info={info}/>}
-          {mod === 2 && <EditForm isEdit={false} info={info}/>}
+          {mod === 1 && <EditForm isEdit={true} info={editInfo}/>}
+          {mod === 2 && <EditForm isEdit={false} info={editInfo}/>}
 
         <ItemList />
       </div>
