@@ -14,7 +14,7 @@ const Item = memo(({ info }) => {
   const itemText = clearText.length > 70 ? `${clearText.slice(0, 70)}...` : clearText
 
   const onItemClick = () => {
-    btnEvent.emit('onItemClick', { id, text, tags })
+    btnEvent.emit('onItemClick', id)
   }
 
   const onDeleteItem = e => {
@@ -25,7 +25,7 @@ const Item = memo(({ info }) => {
 
   const onEditItem = e => {
     e.stopPropagation()
-    btnEvent.emit('onEditItem', { id, text, tags })
+    btnEvent.emit('onEditItem', id)
   }
 
   return (
