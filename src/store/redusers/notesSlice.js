@@ -10,12 +10,27 @@ export const notesSlice = createSlice({
   initialState,
   reducers: {
     deleteNote: (state, action) => {
-      const indx = state.notes.findIndex(note => note.id === action.payload)
-      state.notes.splice(indx,1)
+      const indxNote = state.notes.findIndex(note => note.id === action.payload)
+      state.notes.splice(indxNote, 1)
+    },
+    deleteTag: (state, action) => {
+      const indxNote = state.notes.findIndex(note => note.id === action.payload.noteId)
+      const indxTag = state.notes[indxNote].tags.findIndex(
+        tag => tag.id === action.payload.tagId
+      )
+      //change text
+      const tagIndexText = state.notes[indxNote].text
+        .toLowerCase()
+        .indexOf(state.notes[indxNote].tags[indxTag].tag)
+      const newText = state.notes[indxNote].text.split('')
+      newText.splice(tagIndexText, 1)
+      state.notes[indxNote].text = newText.join('')
+      //delete tag
+      state.notes[indxNote].tags.splice(indxTag, 1)
     },
   },
 })
 
-export const { deleteNote } = notesSlice.actions
+export const { deleteNote, deleteTag } = notesSlice.actions
 
 export default notesSlice.reducer

@@ -1,15 +1,28 @@
-import React, { memo, useRef } from 'react'
+import React, { memo, useEffect, useState, useRef } from 'react'
+import { useDispatch } from 'react-redux'
+
+import { deleteTag } from '../../store/redusers/notesSlice'
 import { btnEvent } from '../../events/event'
 
 import './edit-form.scss'
 
 const EditForm = memo(({ isEdit, info }) => {
+  const dispatch = useDispatch()
   const divTextareaRef = useRef()
 
-  const { id, text, tags } = info
+  if(!info) return
+  let { id, text, tags } = info
 
   const onClose = () => {
     btnEvent.emit('onCloseEditForm')
+  }
+
+  const onTagDelete = tagId => {
+    dispatch(deleteTag({ noteId: id, tagId }))
+  }
+
+  const onChangeText = (event) => {
+    console.log(event.target.value)
   }
 
   const view = (
@@ -41,6 +54,7 @@ const EditForm = memo(({ isEdit, info }) => {
         ref={divTextareaRef}
         spellCheck='false'
         value={text}
+        onChange={onChangeText}
       />
 
       <div className='EditForm__controls'>
@@ -51,7 +65,12 @@ const EditForm = memo(({ isEdit, info }) => {
                 return (
                   <div className='tag' key={`${id}_${el.id}`}>
                     <span className='tag__name'>{el.tag}</span>
-                    <button className='btn tag__btn-delete' >×</button>
+                    <button
+                      className='btn tag__btn-delete'
+                      onClick={() => onTagDelete(el.id)}
+                    >
+                      ×
+                    </button>
                   </div>
                 )
               })}
