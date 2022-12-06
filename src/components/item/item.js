@@ -10,8 +10,8 @@ const Item = memo(({ info }) => {
   const dispatch = useDispatch()
   const { id, text, tags } = info
   const _re = /[^#]*/gm
-  const modText = text.match(_re).join('')
-  const itemText = modText.length > 70 ? `${modText.slice(0, 70)}...` : modText
+  const clearText = text.match(_re).join('')
+  const itemText = clearText.length > 70 ? `${clearText.slice(0, 70)}...` : clearText
 
   const onItemClick = () => {
     btnEvent.emit('onItemClick', { id, text, tags })
