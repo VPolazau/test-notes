@@ -30,19 +30,18 @@ const App = () => {
     })
     btnEvent.addListener('onItemClick', id => {
       setMod(2)
-      const indxNote = notes.findIndex(note => note.id === id)
-      setInfoId(indxNote)
+      setInfoId(id)
     })
     btnEvent.addListener('onEditItem', id => {
       setMod(1)
-      const indxNote = notes.findIndex(note => note.id === id)
-      setInfoId(indxNote)
+      setInfoId(id)
     })
 
   },[])
 
   useEffect(() => {
-    setEditInfo(notes[infoId])
+    const indxNote = notes.findIndex(note => note.id === infoId)
+    setEditInfo(notes[indxNote])
   }, [notes, infoId])
 
   return (
