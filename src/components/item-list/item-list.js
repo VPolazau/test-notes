@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { btnEvent } from '../../events/event'
 
@@ -9,22 +9,25 @@ import './item-list.scss'
 const ItemList = () => {
   const { notes } = useSelector(data => data.notes)
   const [filteredNotes, setFilteredNotes] = useState(notes)
+  const [term, setTerm] = useState('')
 
   useEffect(() => {
-    btnEvent.addListener('onFilterChange', (term) => {
-      setFilteredNotes( () => {
-        return notes.filter(note => {
-          return note.tags.map(el => el.tag).join('').indexOf(term) > -1
-        })
+    btnEvent.addListener('onFilterChange', term => setTerm(term))
+  }, [])
+
+  useEffect(() => {
+    setFilteredNotes(() => {
+      return notes.filter(note => {
+        return (
+          note.tags
+            .map(el => el.tag)
+            .join('')
+            .indexOf(term) > -1
+        )
       })
     })
+  }, [notes, term])
 
-  },[])
-
-  useEffect( () => {
-    setFilteredNotes(notes)
-  },[notes])
-  
   return (
     <div className='ItemList'>
       {filteredNotes.map(item => (
