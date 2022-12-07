@@ -12,6 +12,9 @@ const Item = memo(({ info }) => {
   const _re = /[^#]*/gm
   const clearText = text.match(_re).join('')
   const itemText = clearText.length > 70 ? `${clearText.slice(0, 70)}...` : clearText
+  
+  const masTags = tags.map(el => el.tag)
+  const itemTags = masTags.join('').length > 35 ? `${masTags.join('').slice(0,  35)}...` : masTags
 
   const onItemClick = () => {
     btnEvent.emit('onItemClick', id)
@@ -34,7 +37,7 @@ const Item = memo(({ info }) => {
         <span>×</span>
       </button>
       <div className='Item__info'>{itemText}</div>
-      <div className='Item__tags'>{tags.map(el => el.tag)}</div>
+      <div className='Item__tags'>{itemTags}</div>
       <button className='btn Item__btn-edit' onClick={onEditItem}>
         Edit
       </button>
