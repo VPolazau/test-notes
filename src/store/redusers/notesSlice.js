@@ -13,6 +13,7 @@ export const notesSlice = createSlice({
       const indxNote = state.notes.findIndex(note => note.id === action.payload)
       state.notes.splice(indxNote, 1)
     },
+
     deleteTag: (state, action) => {
       const indxNote = state.notes.findIndex(note => note.id === action.payload.noteId)
       const indxTag = state.notes[indxNote].tags.findIndex(
@@ -28,9 +29,14 @@ export const notesSlice = createSlice({
       //delete tag
       state.notes[indxNote].tags.splice(indxTag, 1)
     },
+
+    onChangeNote: (state, action) => {
+      const indxNote = state.notes.findIndex(note => note.id === action.payload.id)
+      state.notes.splice(indxNote, 1, action.payload)
+    },
   },
 })
 
-export const { deleteNote, deleteTag } = notesSlice.actions
+export const { deleteNote, deleteTag, onChangeNote } = notesSlice.actions
 
 export default notesSlice.reducer

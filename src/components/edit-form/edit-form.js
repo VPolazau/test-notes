@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { deleteTag } from '../../store/redusers/notesSlice'
+import { deleteTag, onChangeNote } from '../../store/redusers/notesSlice'
 import { btnEvent } from '../../events/event'
 
 import './edit-form.scss'
@@ -10,7 +10,6 @@ const EditForm = memo(({ isEdit, info }) => {
   const dispatch = useDispatch()
   const divTextareaRef = useRef()
 
-  if(!info) return
   let { id, text, tags } = info
 
   const onClose = () => {
@@ -21,8 +20,17 @@ const EditForm = memo(({ isEdit, info }) => {
     dispatch(deleteTag({ noteId: id, tagId }))
   }
 
-  const onChangeText = (event) => {
-    console.log(event.target.value)
+  const onChangeText = event => {
+    const { value } = event.target
+    const _re = /(\#.[^\s\.\,]*)/gm // find tags
+    const masTags = value.toLowerCase().match(_re)
+
+    const newTags = []
+    for (var i = 0; i < masTags?.length; i++) {
+      newTags.push({ id: i, tag: masTags[i] })
+    }
+
+    dispatch(onChangeNote({ id, text: value, tags: newTags }))
   }
 
   const view = (
@@ -40,7 +48,7 @@ const EditForm = memo(({ isEdit, info }) => {
             )
           })}
         </div>
-        <button className='btn EditForm__btn-close ml' onClick={onClose}>
+        <button className='btn EditForm__btn-close' onClick={onClose}>
           Close
         </button>
       </div>
@@ -75,7 +83,6 @@ const EditForm = memo(({ isEdit, info }) => {
                 )
               })}
         </div>
-        <button className='btn EditForm__btn-save ml'>Save</button>
         <button className='btn EditForm__btn-close' onClick={onClose}>
           Close
         </button>
