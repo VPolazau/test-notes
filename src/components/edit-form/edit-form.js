@@ -1,7 +1,7 @@
 import React, { memo, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 
-import { deleteTag, onChangeNote } from '../../store/redusers/notesSlice'
+import { deleteTag, onChangeNote, deleteNote } from '../../store/redusers/notesSlice'
 import { btnEvent } from '../../events/event'
 
 import './edit-form.scss'
@@ -30,9 +30,10 @@ const EditForm = memo(({ isEdit, info }) => {
       newTags.push({ id: i, tag: masTags[i] })
     }
 
-    // if(value === '') dispatch(deleteNote(id)) 
-    // else
-    dispatch(onChangeNote({ id, text: value, tags: newTags }))
+    if (value === '') {
+      dispatch(deleteNote(id))
+      btnEvent.emit('onCloseEditForm')
+    } else dispatch(onChangeNote({ id, text: value, tags: newTags }))
   }
 
   const view = (
