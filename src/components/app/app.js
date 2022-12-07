@@ -8,12 +8,13 @@ import ItemList from '../item-list'
 import './app.scss'
 import { btnEvent } from '../../events/event'
 import { useSelector } from 'react-redux'
+import ViewForm from '../view-form'
 
 const App = () => {
   const { notes } = useSelector(state => state.notes)
   const [mod, setMod] = useState(0)
   const [infoId, setInfoId] = useState()
-  const [editInfo, setEditInfo] = useState()
+  const [info, setInfo] = useState()
 
   useEffect(() => {
     btnEvent.addListener('onAddNewItem', () => {
@@ -35,7 +36,7 @@ const App = () => {
 
   useEffect(() => {
     const indxNote = notes.findIndex(note => note.id === infoId)
-    setEditInfo(() => {
+    setInfo(() => {
       if(indxNote === -1) return notes[notes.length-1]
       return notes[indxNote]
     })
@@ -47,8 +48,8 @@ const App = () => {
         <Header />
 
         {mod === 0 && null}
-        {editInfo ? mod === 1 && <EditForm isEdit={true} info={editInfo}/> : null}
-        {editInfo ? mod === 2 && <EditForm isEdit={false} info={editInfo} /> : null}
+        {info ? mod === 1 && <EditForm info={info}/> : null}
+        {info ? mod === 2 && <ViewForm info={info} /> : null}
 
         <ItemList />
       </div>

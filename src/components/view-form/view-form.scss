@@ -1,10 +1,10 @@
-.EditForm {
+.ViewForm {
   align-self: stretch;
   display: flex;
   flex-direction: column;
   margin: 30px 30px 0px 20px;
 
-  .EditForm__textarea {
+  .ViewForm__div {
     padding: 10px;
     height: 150px;
     background-color: #fff;
@@ -15,13 +15,13 @@
     font-family: Arial, Helvetica, sans-serif;
   }
 
-  .EditForm__controls {
+  .ViewForm__controls {
     display: flex;
     justify-content: start;
     width: auto;
     margin-top: 10px;
 
-    .EditForm__tags {
+    .ViewForm__tags {
       display: flex;
       justify-content: start;
       flex-wrap: wrap;
@@ -62,9 +62,12 @@
       }
     }
 
-    .EditForm__btn-close {
-      margin-left: 10px;
+    .ViewForm__btn-edit {
       margin-left: auto;
+    }
+
+    .ViewForm__btn-close {
+      margin-left: 10px;
     }
   }
 }

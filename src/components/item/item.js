@@ -25,11 +25,6 @@ const Item = memo(({ info }) => {
     dispatch(deleteNote(id))
   }
 
-  const onEditItem = e => {
-    e.stopPropagation()
-    btnEvent.emit('onEditItem', id)
-  }
-
   return (
     <div className='Item' onClick={onItemClick}>
       <button className='btn Item__btn-delete' onClick={onDeleteItem}>
@@ -37,9 +32,6 @@ const Item = memo(({ info }) => {
       </button>
       <div className='Item__info'>{itemText}</div>
       <div className='Item__tags'>{itemTags}</div>
-      <button className='btn Item__btn-edit' onClick={onEditItem}>
-        Edit
-      </button>
     </div>
   )
 })
