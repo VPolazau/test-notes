@@ -17,13 +17,8 @@ const App = () => {
 
   useEffect(() => {
     btnEvent.addListener('onAddNewItem', () => {
-      console.log('onAddNewItem')
       setMod(1)
-      setEditInfo({
-        id: notes.length + 1,
-        text: '',
-        tags: [],
-      })
+      setInfoId(-1)
     })
     btnEvent.addListener('onCloseEditForm', () => {
       setMod(0)
@@ -40,7 +35,10 @@ const App = () => {
 
   useEffect(() => {
     const indxNote = notes.findIndex(note => note.id === infoId)
-    setEditInfo(notes[indxNote])
+    setEditInfo(() => {
+      if(indxNote === -1) return notes[notes.length-1]
+      return notes[indxNote]
+    })
   }, [notes, infoId])
 
   return (
@@ -49,7 +47,7 @@ const App = () => {
         <Header />
 
         {mod === 0 && null}
-        {editInfo ? mod === 1 && <EditForm isEdit={true} info={editInfo} /> : null}
+        {editInfo ? mod === 1 && <EditForm isEdit={true} info={editInfo}/> : null}
         {editInfo ? mod === 2 && <EditForm isEdit={false} info={editInfo} /> : null}
 
         <ItemList />

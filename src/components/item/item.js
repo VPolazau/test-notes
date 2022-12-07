@@ -23,7 +23,6 @@ const Item = memo(({ info }) => {
   const onDeleteItem = e => {
     e.stopPropagation()
     dispatch(deleteNote(id))
-    console.log(`Delete Item ${id}`)
   }
 
   const onEditItem = e => {

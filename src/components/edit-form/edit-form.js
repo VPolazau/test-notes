@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState, useRef } from 'react'
+import React, { memo, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 
 import { deleteTag, onChangeNote } from '../../store/redusers/notesSlice'
@@ -30,13 +30,15 @@ const EditForm = memo(({ isEdit, info }) => {
       newTags.push({ id: i, tag: masTags[i] })
     }
 
+    // if(value === '') dispatch(deleteNote(id)) 
+    // else
     dispatch(onChangeNote({ id, text: value, tags: newTags }))
   }
 
   const view = (
     <div className='EditForm'>
       <div className='EditForm__div-textarea' disabled>
-        {spanWrapper(text, tags)}
+        {text}
       </div>
       <div className='EditForm__controls'>
         <div className='EditForm__tags'>
@@ -94,29 +96,29 @@ const EditForm = memo(({ isEdit, info }) => {
 
 export default EditForm
 
-function spanWrapper(text, tags) {
-  const _reTag = /(\#.[^\s\.\,]*)/gm // find tags
-  const _re = /[^#]*/gm // without '#'
-  const arr = text.split(_reTag)
-  tags.map(el => {
-    const indx = arr.indexOf(el.tag)
-    if (indx === -1)
-      arr.splice(
-        1,
-        1,
-        <span key={el.id} style={{ color: '#2200ff' }}>
-          {el.tag.match(_re).join('')}
-        </span>
-      )
-    else
-      arr.splice(
-        indx,
-        1,
-        <span key={el.id} style={{ color: '#2200ff' }}>
-          {el.tag.match(_re).join('')}
-        </span>
-      )
-  })
+// function spanWrapper(text, tags) {
+//   const _reTag = /(\#.[^\s\.\,]*)/gm // find tags
+//   const _re = /[^#]*/gm // without '#'
+//   const arr = text.split(_reTag)
+//   tags.map(el => {
+//     const indx = arr.indexOf(el.tag)
+//     if (indx === -1)
+//       arr.splice(
+//         1,
+//         1,
+//         <span key={el.id} style={{ color: '#2200ff' }}>
+//           {el.tag.match(_re).join('')}
+//         </span>
+//       )
+//     else
+//       arr.splice(
+//         indx,
+//         1,
+//         <span key={el.id} style={{ color: '#2200ff' }}>
+//           {el.tag.match(_re).join('')}
+//         </span>
+//       )
+//   })
 
-  return arr
-}
+//   return arr
+// }
