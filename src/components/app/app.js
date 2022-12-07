@@ -16,16 +16,16 @@ const App = () => {
   const [editInfo, setEditInfo] = useState()
 
   useEffect(() => {
-    btnEvent.addListener('onAddNewItem', ()=> {
+    btnEvent.addListener('onAddNewItem', () => {
       console.log('onAddNewItem')
       setMod(1)
       setEditInfo({
         id: notes.length + 1,
         text: '',
-        tags: []
+        tags: [],
       })
     })
-    btnEvent.addListener('onCloseEditForm', ()=> {
+    btnEvent.addListener('onCloseEditForm', () => {
       setMod(0)
     })
     btnEvent.addListener('onItemClick', id => {
@@ -36,8 +36,7 @@ const App = () => {
       setMod(1)
       setInfoId(id)
     })
-
-  },[])
+  }, [])
 
   useEffect(() => {
     const indxNote = notes.findIndex(note => note.id === infoId)
@@ -49,9 +48,9 @@ const App = () => {
       <div className='App'>
         <Header />
 
-          {mod === 0 && null}
-          {mod === 1 && <EditForm isEdit={true} info={editInfo}/>}
-          {mod === 2 && <EditForm isEdit={false} info={editInfo}/>}
+        {mod === 0 && null}
+        {editInfo ? mod === 1 && <EditForm isEdit={true} info={editInfo} /> : null}
+        {editInfo ? mod === 2 && <EditForm isEdit={false} info={editInfo} /> : null}
 
         <ItemList />
       </div>
