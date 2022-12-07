@@ -1,14 +1,16 @@
 import React, { memo, useRef } from 'react'
 import { useDispatch } from 'react-redux'
+// import { CKEditor } from '@ckeditor/ckeditor5-react';
+// import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 import { deleteTag, onChangeNote, deleteNote } from '../../store/redusers/notesSlice'
 import { btnEvent } from '../../events/event'
 
 import './edit-form.scss'
 
-const EditForm = memo(({ isEdit, info }) => {
+const EditForm = memo(({ info }) => {
+  const ckeRef = useRef()
   const dispatch = useDispatch()
-  const divTextareaRef = useRef()
 
   let { id, text, tags } = info
 
@@ -36,38 +38,28 @@ const EditForm = memo(({ isEdit, info }) => {
     } else dispatch(onChangeNote({ id, text: value, tags: newTags }))
   }
 
-  const view = (
-    <div className='EditForm'>
-      <div className='EditForm__div-textarea' disabled>
-        {text}
-      </div>
-      <div className='EditForm__controls'>
-        <div className='EditForm__tags'>
-          {tags?.map(el => {
-            return (
-              <div className='tag' key={`${id}_${el.id}`}>
-                <span className='tag__name'>{el.tag}</span>
-              </div>
-            )
-          })}
-        </div>
-        <button className='btn EditForm__btn-close' onClick={onClose}>
-          Close
-        </button>
-      </div>
-    </div>
-  )
+  // const onChangeCKeditor = (event, editor) => {
+  //   const data = editor.getData()
+  //   console.log(data)
+  // }
 
-  const edit = (
+  return (
     <div className='EditForm'>
       <textarea
-        className='EditForm__div-textarea'
-        ref={divTextareaRef}
+        className='EditForm__textarea'
         spellCheck='false'
         value={text}
         onChange={onChangeText}
       />
-
+      {/* <div className='EditForm__textarea'>
+      <CKEditor
+      editor={ClassicEditor}
+      data={spanWrapper(text, tags)}
+      ref={ckeRef}
+      onChange={onChangeCKeditor}
+      />
+      </div> */}
+      
       <div className='EditForm__controls'>
         <div className='EditForm__tags'>
           {tags.length === 0
@@ -92,34 +84,30 @@ const EditForm = memo(({ isEdit, info }) => {
       </div>
     </div>
   )
-  return isEdit ? edit : view
 })
 
 export default EditForm
 
-// function spanWrapper(text, tags) {
-//   const _reTag = /(\#.[^\s\.\,]*)/gm // find tags
-//   const _re = /[^#]*/gm // without '#'
-//   const arr = text.split(_reTag)
-//   tags.map(el => {
-//     const indx = arr.indexOf(el.tag)
-//     if (indx === -1)
-//       arr.splice(
-//         1,
-//         1,
-//         <span key={el.id} style={{ color: '#2200ff' }}>
-//           {el.tag.match(_re).join('')}
-//         </span>
-//       )
-//     else
-//       arr.splice(
-//         indx,
-//         1,
-//         <span key={el.id} style={{ color: '#2200ff' }}>
-//           {el.tag.match(_re).join('')}
-//         </span>
-//       )
-//   })
+function spanWrapper(text, tags) {
+  
+  const _reTag = /(\#.[^\s\.\,]*)/gm // find tags
+  // const _re = /[^#]*/gm // without '#'
+  const arr = text.split(_reTag)
+  tags.map(el => {
+    const indx = arr.indexOf(el.tag)
+    if (indx === -1)
+      arr.splice(
+        1,
+        1,
+        `<strong style='color: red'>${el.tag}</strong>\xa0`
+      )
+    else
+      arr.splice(
+        indx,
+        1,
+        `<strong>${el.tag}</strong>\xa0`
+        )
+  })
 
-//   return arr
-// }
+  return arr.join('')
+}
