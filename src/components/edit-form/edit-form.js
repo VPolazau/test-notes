@@ -88,26 +88,26 @@ const EditForm = memo(({ info }) => {
 
 export default EditForm
 
-function spanWrapper(text, tags) {
+// function spanWrapper(text, tags) {
   
-  const _reTag = /(\#.[^\s\.\,]*)/gm // find tags
-  // const _re = /[^#]*/gm // without '#'
-  const arr = text.split(_reTag)
-  tags.map(el => {
-    const indx = arr.indexOf(el.tag)
-    if (indx === -1)
-      arr.splice(
-        1,
-        1,
-        `<strong style='color: red'>${el.tag}</strong>\xa0`
-      )
-    else
-      arr.splice(
-        indx,
-        1,
-        `<strong>${el.tag}</strong>\xa0`
-        )
-  })
+//   const _reTag = /(\#.[^\s\.\,]*)/gm // find tags
+//   // const _re = /[^#]*/gm // without '#'
+//   const arr = text.split(_reTag)
+//   tags.map(el => {
+//     const indx = arr.indexOf(el.tag)
+//     if (indx === -1)
+//       arr.splice(
+//         1,
+//         1,
+//         `<span style="font-weight: 500">${el.tag}</span>`
+//       )
+//     else
+//       arr.splice(
+//         indx,
+//         1,
+//         `<span style="font-weight: 500">${el.tag}</span>`
+//         )
+//   })
 
-  return arr.join('')
-}
+//   return arr.join('')
+// }
