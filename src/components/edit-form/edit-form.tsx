@@ -51,12 +51,17 @@ const EditForm: React.FC<IEditFormProps> = memo(({ info }) => {
 
   return (
     <div className='EditForm'>
-      <textarea
+      {text === '' ? <textarea
+        className='EditForm__textarea'
+        spellCheck='false'
+        value=''
+        onChange={onChangeText}
+      /> : <textarea
         className='EditForm__textarea'
         spellCheck='false'
         defaultValue={text}
         onChange={onChangeText}
-      />
+      />}
 
       <div className='EditForm__controls'>
         <div className='EditForm__tags'>
