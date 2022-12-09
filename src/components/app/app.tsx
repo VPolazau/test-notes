@@ -41,8 +41,6 @@ const App = () => {
       return notes[indxNote]
     })
   }, [notes, infoId])
-
-  console.log(info);
   
   return (
     <ErrorBoudry>
