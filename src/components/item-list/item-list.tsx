@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
 import { btnEvent } from '../../events/event'
+import { useAppSelector } from '../../hooks/redux'
 
 import Item from '../item'
 
 import './item-list.scss'
 
 const ItemList = () => {
-  const { notes } = useSelector(data => data.notes)
+  const { notes } = useAppSelector(data => data.notes)
   const [filteredNotes, setFilteredNotes] = useState(notes)
   const [term, setTerm] = useState('')
 

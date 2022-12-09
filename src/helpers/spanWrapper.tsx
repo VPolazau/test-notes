@@ -1,10 +1,10 @@
-import React from "react"
+import { ReactNode } from "react"
 
-const spanWrapper = (text: string, tags: [{id: number, tag: string}], noteId: number) => {
+const spanWrapper = (text?: string, tags?: {id: number,tag: string}[], noteId?: number) => {
   const _reTag = /(\#.[^\s\.\,]*)/gm // find tags
   const _re = /[^#]*/gm // without '#'
-  const arr: string[] = text.split(_reTag)
-  tags.map((el) => {
+  const arr: ReactNode | any = text?.split(_reTag)
+  tags?.map((el) => {
     const indx: number = arr.indexOf(el.tag)
     if (indx === -1)
       arr.splice(

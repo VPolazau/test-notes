@@ -2,7 +2,15 @@ import React, { Component } from 'react'
 
 import ErrorIndicator from '../error-indicator'
 
-export default class ErrorBoundry extends Component {
+interface IProps {
+  children?: React.ReactNode
+}
+
+interface IState {
+  hasError: boolean
+}
+
+export default class ErrorBoundry extends Component <IProps, IState>{
   state = {
     hasError: false,
   }

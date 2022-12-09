@@ -1,11 +1,22 @@
 import React, { memo } from 'react'
 
 import { btnEvent } from '../../events/event'
-import spanWrapper from '../../helpers/snanWrapper.tsx'
+import spanWrapper from '../../helpers/spanWrapper'
 
 import './view-form.scss'
 
-const ViewForm = memo(({ info }) => {
+interface IViewFormProps {
+  info: {
+    id: number,
+    text: string,
+    tags: {
+      id: number,
+      tag: string
+    }[]
+  }
+}
+
+const ViewForm: React.FC<IViewFormProps> = memo(({ info }) => {
   let { id, text, tags } = info
 
   const onClose = () => {
@@ -15,10 +26,10 @@ const ViewForm = memo(({ info }) => {
   const onEditItem = () => {
     btnEvent.emit('onEditItem', id)
   }
-
+  
   return (
     <div className='ViewForm'>
-      <div className='ViewForm__div' disabled>
+      <div className='ViewForm__div'>
         {spanWrapper(text, tags, id)}
       </div>
       <div className='ViewForm__controls'>

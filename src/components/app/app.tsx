@@ -7,14 +7,25 @@ import ItemList from '../item-list'
 
 import './app.scss'
 import { btnEvent } from '../../events/event'
-import { useSelector } from 'react-redux'
 import ViewForm from '../view-form'
+import { useAppSelector } from '../../hooks/redux'
+
+interface Iinfo {
+  info: {
+    id: number,
+    text: string,
+    tags: {
+      id: number,
+      tag: string
+    }[]
+  }
+}
 
 const App = () => {
-  const { notes } = useSelector(state => state.notes)
+  const { notes } = useAppSelector(state => state.notes)
   const [mod, setMod] = useState(0)
-  const [infoId, setInfoId] = useState()
-  const [info, setInfo] = useState()
+  const [infoId, setInfoId] = useState<number>()
+  const [info, setInfo] = useState<Iinfo>()
 
   useEffect(() => {
     btnEvent.addListener('onAddNewItem', () => {
@@ -36,9 +47,12 @@ const App = () => {
 
   useEffect(() => {
     const indxNote = notes.findIndex(note => note.id === infoId)
+    //@ts-ignore
     setInfo(() => {
-      if(indxNote === -1) return notes[notes.length-1]
-      return notes[indxNote]
+        if (indxNote === -1){
+          return notes[notes.length - 1]
+        }
+        return notes[indxNote]
     })
   }, [notes, infoId])
 
@@ -48,7 +62,9 @@ const App = () => {
         <Header />
 
         {mod === 0 && null}
-        {info ? mod === 1 && <EditForm info={info}/> : null}
+        {/* @ts-ignore */}
+        {info ? mod === 1 && <EditForm info={info} /> : null}
+        {/* @ts-ignore */}
         {info ? mod === 2 && <ViewForm info={info} /> : null}
 
         <ItemList />

@@ -1,15 +1,15 @@
 import React from 'react'
-import { useDispatch } from 'react-redux'
 
 import {btnEvent} from '../../events/event'
+import { useAppDispatch } from '../../hooks/redux'
 import { newNote } from '../../store/redusers/notesSlice'
 
 import './header.scss'
 
 const Header = () => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
-  const onFiltered = event => {
+  const onFiltered: React.ChangeEventHandler<HTMLInputElement> = event => {
     btnEvent.emit('onFilterChange', event.target.value)
   }
 
