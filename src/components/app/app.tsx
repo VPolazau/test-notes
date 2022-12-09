@@ -17,12 +17,14 @@ const App = () => {
   const [info, setInfo] = useState(notes[0])
 
   useEffect(() => {
-    btnEvent.addListener('onAddNewItem', () => {
+    btnEvent.addListener('onAddNewItem', (id) => {
       setMod(1)
-      setInfoId(-1)
-      setInfo(() => {
-        return { id: notes.length - 1, text: '', tags: [] }
-      })
+      if (id === -1) {
+        setInfoId(-1)
+        setInfo(() => {
+          return { id: notes.length - 1, text: '', tags: [] }
+        })
+      } else setInfoId(id)
     })
     btnEvent.addListener('onCloseEditForm', () => {
       setMod(0)

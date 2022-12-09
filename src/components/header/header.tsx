@@ -1,12 +1,13 @@
 import React from 'react'
 
 import {btnEvent} from '../../events/event'
-import { useAppDispatch } from '../../hooks/redux'
+import { useAppDispatch, useAppSelector } from '../../hooks/redux'
 import { newNote } from '../../store/redusers/notesSlice'
 
 import './header.scss'
 
 const Header = () => {
+  const { notes } = useAppSelector(state => state.notes)
   const dispatch = useAppDispatch()
 
   const onFiltered: React.ChangeEventHandler<HTMLInputElement> = event => {
@@ -14,8 +15,10 @@ const Header = () => {
   }
 
   const newItem = () => {
+    if(notes[notes.length - 1].text !== ''){
     dispatch(newNote())
-    btnEvent.emit('onAddNewItem')
+    btnEvent.emit('onAddNewItem', -1)
+    } else btnEvent.emit('onAddNewItem', notes.length - 1)
   }
 
   return (
