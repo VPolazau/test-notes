@@ -1,6 +1,7 @@
 import React, { memo } from 'react'
 
 import { btnEvent } from '../../events/event'
+import spanWrapper from '../../helpers/snanWrapper.tsx'
 
 import './view-form.scss'
 
@@ -42,30 +43,3 @@ const ViewForm = memo(({ info }) => {
 })
 
 export default ViewForm
-
-function spanWrapper(text, tags, id) {
-  const _reTag = /(\#.[^\s\.\,]*)/gm // find tags
-  const _re = /[^#]*/gm // without '#'
-  const arr = text.split(_reTag)
-  tags.map(el => {
-    const indx = arr.indexOf(el.tag)
-    if (indx === -1)
-      arr.splice(
-        1,
-        1,
-        <strong key={`${id}_${el.id}`} style={{ color: 'red' }}>
-          {el.tag.match(_re).join('')}
-        </strong>
-      )
-    else
-      arr.splice(
-        indx,
-        1,
-        <strong key={`${id}_${el.id}`} style={{ color: 'red' }}>
-          {el.tag.match(_re).join('')}
-        </strong>
-      )
-  })
-
-  return arr
-}
