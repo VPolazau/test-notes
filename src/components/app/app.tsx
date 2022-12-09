@@ -20,6 +20,9 @@ const App = () => {
     btnEvent.addListener('onAddNewItem', () => {
       setMod(1)
       setInfoId(-1)
+      setInfo(() => {
+        return { id: notes.length - 1, text: '', tags: [] }
+      })
     })
     btnEvent.addListener('onCloseEditForm', () => {
       setMod(0)
@@ -41,7 +44,7 @@ const App = () => {
       return notes[indxNote]
     })
   }, [notes, infoId])
-  
+
   return (
     <ErrorBoudry>
       <div className='App'>
