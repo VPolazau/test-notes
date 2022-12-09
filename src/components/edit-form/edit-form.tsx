@@ -54,7 +54,7 @@ const EditForm: React.FC<IEditFormProps> = memo(({ info }) => {
       <textarea
         className='EditForm__textarea'
         spellCheck='false'
-        value={text}
+        defaultValue={text}
         onChange={onChangeText}
       />
 
