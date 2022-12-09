@@ -3,7 +3,7 @@
   padding: 15px;
   margin: 10px 20px;
   display: grid;
-  grid-template-rows: 1fr 5fr 2fr;
+  grid-template-rows: 1fr 4fr 2fr;
   width: 300px;
   height: 100px;
 
@@ -25,12 +25,24 @@
 
   .Item__btn-delete {
     justify-self: flex-end;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px 3px;
     border: white;
     background-color: #fff;
-    font-size: larger;
+    font-size: 17px;
     border-radius: 50%;
+    visibility: hidden;
+    height: 22px;
+    width: 22px;
+
     &:hover {
       background-color: #b3deed;
+    }
+
+    .btn-span-x {
+      line-height: 77%;
     }
   }
 
@@ -38,9 +50,5 @@
     margin-top: 5px;
     font-size: 1rem;
     color: #656565;
-  }
-
-  .btn {
-    visibility: hidden;
   }
 }

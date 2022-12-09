@@ -1,4 +1,4 @@
-.Header{
+.Header {
   display: flex;
   justify-content: start;
   align-items: center;
@@ -7,20 +7,20 @@
   padding-bottom: 5px;
   border-bottom: 2px solid black;
 
-  .Header__title{
+  .Header__title {
     font-size: 3em;
-    font-weight:900;
+    font-weight: 900;
     text-shadow: 2px 2px #558abb;
   }
 
-  .Header__input{
+  .Header__input {
     margin-left: auto;
     padding-left: 7px;
     height: 2em;
     font-size: 1em;
   }
 
-  .Header__btn-new{
+  .Header__btn-new {
     margin-left: 100px;
     height: 2em;
     font-size: 1em;

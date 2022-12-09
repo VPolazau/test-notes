@@ -33,7 +33,7 @@ const Item: React.FC<IItemInfo> = memo(({ info }) => {
   return (
     <div className='Item' onClick={onItemClick}>
       <button className='btn Item__btn-delete' onClick={onDeleteItem}>
-        <span>×</span>
+        <span className='btn-span-x'>&#215;</span>
       </button>
       <div className='Item__info'>{limText(text)}</div>
       <div className='Item__tags'>{limTags(tags)}</div>

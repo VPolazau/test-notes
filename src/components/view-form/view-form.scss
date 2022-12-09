@@ -1,3 +1,9 @@
+%btnSize {
+  height: 1.5em;
+  font-size: 1em;
+  width: 90px;
+}
+
 .ViewForm {
   align-self: stretch;
   display: flex;
@@ -63,10 +69,12 @@
     }
 
     .ViewForm__btn-edit {
+      @extend %btnSize;
       margin-left: auto;
     }
 
     .ViewForm__btn-close {
+      @extend %btnSize;
       margin-left: 10px;
     }
   }

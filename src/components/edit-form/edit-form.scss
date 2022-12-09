@@ -43,12 +43,17 @@
         }
 
         .tag__btn-delete {
+          display: flex;
+          justify-content: center;
+          align-items: center;
           margin: 1px 3px;
           border: white;
           background-color: #fff;
           font-size: 17px;
           border-radius: 50%;
           visibility: hidden;
+          height: 22px;
+          width: 22px;
           &:hover {
             background-color: #b3deed;
           }
@@ -63,7 +68,9 @@
     }
 
     .EditForm__btn-close {
-      margin-left: 10px;
+      height: 1.5em;
+      font-size: 1em;
+      width: 90px;
       margin-left: auto;
     }
   }
