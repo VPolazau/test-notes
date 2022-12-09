@@ -1,0 +1,20 @@
+.ErrorIndicator__div{
+  height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  .span-error{
+    font-size: 4rem;
+    font-weight: bolder;
+    text-shadow: 2px 2px rgb(0, 157, 89);
+  }
+
+  .description-error{
+    font-size: 2rem;
+    color: rgba(0, 0, 0, 0.461);
+    text-shadow: 1px 1px rgb(0, 157, 89);
+  }
+}
